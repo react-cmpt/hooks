@@ -1,3 +1,12 @@
+## [0.4.1](https://github.com/react-cmpt/hooks/compare/v0.4.0...v0.4.1) (2021-01-20)
+
+
+### Features
+
+* **useLoadImg:** JSX.Element -> ImgElement (imgNode type) ([3c41ff0](https://github.com/react-cmpt/hooks/commit/3c41ff0f70a652c0433848cadafde876ed2409d7))
+
+
+
 # [0.4.0](https://github.com/react-cmpt/hooks/compare/v0.3.1...v0.4.0) (2020-08-15)
 
 
