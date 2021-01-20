@@ -1,17 +1,17 @@
-# Jimo React Hooks
+# React Hooks
 
 Collection of some react hooks
 
-[![CI](https://github.com/jimengio/jimo-hooks/workflows/CI/badge.svg?branch=master)](https://github.com/jimengio/jimo-hooks/actions?query=workflow%3ACI)
-[![npm](https://img.shields.io/npm/v/@jimengio/jimo-hooks.svg)](https://www.npmjs.com/package/@jimengio/jimo-hooks)
-[![GitHub license](https://img.shields.io/github/license/jimengio/jimo-hooks)](https://github.com/jimengio/jimo-hooks/blob/master/LICENSE)
+[![CI](https://github.com/react-cmpt/hooks/workflows/CI/badge.svg?branch=master)](https://github.com/react-cmpt/hooks/actions?query=workflow%3ACI)
+[![npm](https://img.shields.io/npm/v/@react-cmpt/hooks.svg)](https://www.npmjs.com/package/@react-cmpt/hooks)
+[![GitHub license](https://img.shields.io/github/license/react-cmpt/hooks)](https://github.com/react-cmpt/hooks/blob/master/LICENSE)
 
 ## Usage
 
 ### Installation
 
 ```shell
-yarn add @jimengio/jimo-hooks
+yarn add @@react-cmpt/hooks
 ```
 
 ## Hooks
@@ -46,7 +46,7 @@ Click event with `loading`
 | error    | Error    |         | catch error |
 
 ```tsx
-import { useAsyncClick } from "@jimengio/jimo-hooks";
+import { useAsyncClick } from "@react-cmpt/hooks";
 
 const asyncFn = async () => {
   // do something
@@ -78,7 +78,7 @@ options:
 > [more options](https://github.com/xnimorz/use-debounce#options)
 
 ```tsx
-import { useDebounce } from "@jimengio/jimo-hooks";
+import { useDebounce } from "@react-cmpt/hooks";
 
 const Demo = () => {
   const [text, setText] = useState("hello");
@@ -108,7 +108,7 @@ const Demo = () => {
 | options  | Object   |         |         |
 
 ```tsx
-import { useDebouncedCallback } from "@jimengio/jimo-hooks";
+import { useDebouncedCallback } from "@react-cmpt/hooks";
 
 const Demo = () => {
   const [value, setValue] = useState();
@@ -150,7 +150,7 @@ Click event with `loading` and `debounce`
 | error                   | Error    |         | catch error                                            |
 
 ```tsx
-import { useDebouncedClick } from "@jimengio/jimo-hooks";
+import { useDebouncedClick } from "@react-cmpt/hooks";
 
 const asyncFn = async () => {
   // do something
@@ -170,7 +170,7 @@ const Demo = ({ asyncFn }) => {
 | value  | any  |         |         |
 
 ```tsx
-import { useDeepCompareCache } from "@jimengio/jimo-hooks";
+import { useDeepCompareCache } from "@react-cmpt/hooks";
 
 const obj1 = { a: 1, b: { b1: 2 } };
 const obj2 = { a: 1, b: { b1: 2 } };
@@ -186,7 +186,7 @@ const Demo = () => {
 ```
 
 ```tsx
-import { useDeepCompareCache } from "@jimengio/jimo-hooks";
+import { useDeepCompareCache } from "@react-cmpt/hooks";
 
 const Demo = () => {
   // Deep comparison React.useEffect
@@ -213,7 +213,7 @@ Deep comparison React.useEffect
 | deps   | Array    |         | If present, effect will only activate if the values in the list change. |
 
 ```tsx
-import { useDeepEffect } from "@jimengio/jimo-hooks";
+import { useDeepEffect } from "@react-cmpt/hooks";
 
 const Demo = ({ value: Object }) => {
   useDeepEffect(() => {
@@ -240,7 +240,7 @@ Handle the setInterval timer function.
 | run    | function          |         | Manual restart interval function. |
 
 ```tsx
-import { useInterval } from "@jimengio/jimo-hooks";
+import { useInterval } from "@react-cmpt/hooks";
 
 const Demo = () => {
   const { state, cancel, run } = useInterval(() => {
@@ -264,7 +264,7 @@ Check component mount state
 | callback | function |         | Get mount status |
 
 ```tsx
-import { useMountedState } from "@jimengio/jimo-hooks";
+import { useMountedState } from "@react-cmpt/hooks";
 
 const Demo = () => {
   const getMounted = useMountedState();
@@ -301,7 +301,7 @@ Get image loading status
 | isError | boolean                            |         | image errored |
 
 ```tsx
-import { useLoadImg } from "@jimengio/jimo-hooks";
+import { useLoadImg } from "@react-cmpt/hooks";
 
 const Demo = () => {
   const { imgNode, loading } = useLoadImg({
@@ -350,7 +350,7 @@ throttled value
 | value  | any  | Returns the new throttled value. |
 
 ```tsx
-import { useThrottle } from "@jimengio/jimo-hooks";
+import { useThrottle } from "@react-cmpt/hooks";
 
 const Demo = ({ value }) => {
   const tValue = useThrottle(value);
@@ -398,7 +398,7 @@ throttled function
 | callPending | function | The callback manually function. |
 
 ```tsx
-import { useThrottleFn } from "@jimengio/jimo-hooks";
+import { useThrottleFn } from "@react-cmpt/hooks";
 
 const Demo = () => {
   const { callback, cancel } = useThrottleFn(() => {
@@ -418,7 +418,7 @@ Unmount callback
 | fn     | function |         |         |
 
 ```tsx
-import { useUnmount } from "@jimengio/jimo-hooks";
+import { useUnmount } from "@react-cmpt/hooks";
 
 const Demo = () => {
   useUnmount(() => {
@@ -439,7 +439,7 @@ React.useEffect cancel the first mount trigger
 | deps   | Array    |         | If present, effect will only activate if the values in the list change. |
 
 ```tsx
-import { useUpdateEffect, useDeepCompareCache } from "@jimengio/jimo-hooks";
+import { useUpdateEffect, useDeepCompareCache } from "@react-cmpt/hooks";
 
 const Demo = () => {
   useUpdateEffect(() => {

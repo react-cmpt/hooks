@@ -1,5 +1,5 @@
 {
-  "name": "@jimengio/jimo-hooks",
+  "name": "@react-cmpt/hooks",
   "version": "0.4.0",
   "description": "Some react hooks",
   "main": "lib/index.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jimengio/jimo-hooks.git"
+    "url": "git+https://github.com/react-cmpt/hooks.git"
   },
   "keywords": [
     "react",
