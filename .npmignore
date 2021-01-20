@@ -20,4 +20,4 @@ jest.json
 .travis.yml
 .prettierrc
 .eslintrc.json
-.eslintignore
+.*ignore
