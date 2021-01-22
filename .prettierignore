@@ -6,6 +6,7 @@
 /dist
 /lib
 /esm
+coverage
 
 LICENSE
 CHANGELOG.md
