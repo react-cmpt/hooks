@@ -457,7 +457,7 @@ const Demo = () => {
 
 ## Dependencies
 
-- [lodash.isequal](https://github.com/lodash/lodash)
+- [fast-deep-equal](https://github.com/epoberezkin/fast-deep-equal)
 - [use-debounce](https://github.com/xnimorz/use-debounce)
 - [@react-cmpt/use-throttle](https://github.com/react-cmpt/use-throttle)
 
