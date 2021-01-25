@@ -2,9 +2,8 @@
 
 Collection of some react hooks
 
-[![CI](https://github.com/react-cmpt/hooks/workflows/CI/badge.svg?branch=master)](https://github.com/react-cmpt/hooks/actions?query=workflow%3ACI)
+[![CI](https://github.com/react-cmpt/hooks/workflows/CI/badge.svg?branch=main)](https://github.com/react-cmpt/hooks/actions?query=workflow%3ACI)
 [![npm](https://img.shields.io/npm/v/@react-cmpt/hooks.svg)](https://www.npmjs.com/package/@react-cmpt/hooks)
-[![GitHub license](https://img.shields.io/github/license/react-cmpt/hooks)](https://github.com/react-cmpt/hooks/blob/master/LICENSE)
 
 ## Usage
 
