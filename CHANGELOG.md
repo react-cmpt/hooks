@@ -1,3 +1,12 @@
+## [0.4.2](https://github.com/react-cmpt/hooks/compare/v0.4.1...v0.4.2) (2021-01-30)
+
+
+### Refactor
+
+* equal: lodash.isequal -> [fast-deep-equal](https://github.com/epoberezkin/fast-deep-equal) ([cd18b32](https://github.com/react-cmpt/hooks/commit/cd18b32017c320964b6157756abef805689c0d22))
+
+
+
 ## [0.4.1](https://github.com/react-cmpt/hooks/compare/v0.4.0...v0.4.1) (2021-01-20)
 
 
