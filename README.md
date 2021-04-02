@@ -10,7 +10,7 @@ Collection of some react hooks
 ### Installation
 
 ```shell
-yarn add @@react-cmpt/hooks
+yarn add @react-cmpt/hooks
 ```
 
 ## Hooks
