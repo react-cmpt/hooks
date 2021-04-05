@@ -1,4 +1,10 @@
-import { useThrottle } from "@react-cmpt/use-throttle";
+import {
+  useThrottle,
+  ThrottleOptions,
+  ControlFunctions,
+} from "@react-cmpt/use-throttle";
+
+export { ThrottleOptions, ControlFunctions };
 
 /**
  * useThrottle
