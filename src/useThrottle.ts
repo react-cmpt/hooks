@@ -4,7 +4,7 @@ import {
   ControlFunctions,
 } from "@react-cmpt/use-throttle";
 
-export { ThrottleOptions, ControlFunctions };
+export type { ThrottleOptions, ControlFunctions };
 
 /**
  * useThrottle

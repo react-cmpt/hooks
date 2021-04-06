@@ -4,7 +4,7 @@ import {
   ThrottleReturnResult,
 } from "@react-cmpt/use-throttle";
 
-export { useThrottleFn, ThrottleFnOptions, ThrottleReturnResult };
+export type { ThrottleFnOptions, ThrottleReturnResult };
 
 /**
  * useThrottleFn
