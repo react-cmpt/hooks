@@ -1,8 +1,8 @@
-import {
-  useThrottleFn,
+import type {
   ThrottleFnOptions,
   ThrottleReturnResult,
 } from "@react-cmpt/use-throttle";
+import { useThrottleFn } from "@react-cmpt/use-throttle";
 
 export type { ThrottleFnOptions, ThrottleReturnResult };
 

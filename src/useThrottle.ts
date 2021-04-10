@@ -1,8 +1,8 @@
-import {
-  useThrottle,
+import type {
   ThrottleOptions,
   ControlFunctions,
 } from "@react-cmpt/use-throttle";
+import { useThrottle } from "@react-cmpt/use-throttle";
 
 export type { ThrottleOptions, ControlFunctions };
 

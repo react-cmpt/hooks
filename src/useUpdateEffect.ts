@@ -1,4 +1,5 @@
-import { useEffect, EffectCallback, DependencyList, useRef } from "react";
+import type { EffectCallback, DependencyList } from "react";
+import { useEffect, useRef } from "react";
 
 /**
  * useUpdateEffect
