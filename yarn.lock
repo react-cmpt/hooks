@@ -516,10 +516,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@react-cmpt/use-throttle@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@react-cmpt/use-throttle/-/use-throttle-0.3.1.tgz#f309e2a96cdeee3ceddc97eb01d2f9e432c30b93"
-  integrity sha512-sC6Q6/xGhEjppfJJvDDjdvyc0yC0ZPfRXSnFmE+ML8IPkdG7VtsKdRlbpMxYiGyZCPQ+yRsShDElmMMUxZFEyg==
+"@react-cmpt/use-throttle@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@react-cmpt/use-throttle/-/use-throttle-0.3.2.tgz#025cea61c376ab9c9679eb5ff478b7a1c7af3e0b"
+  integrity sha512-ly4+MTKCRrkSps7CnQ7QnKTehaCske/ZXshuGwQNZg8V6hDfzxnTNDhTXOa6mXvOmN9vXliiP0/Yx/2QpGIqKg==
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.2"
