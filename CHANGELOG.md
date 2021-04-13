@@ -1,3 +1,17 @@
+# [0.5.0](https://github.com/react-cmpt/hooks/compare/v0.4.2...v0.5.0) (2021-04-13)
+
+
+### Bug Fixes
+
+* **type:** parse error ([eb7fa7f](https://github.com/react-cmpt/hooks/commit/eb7fa7f64ceb18d4b1af940d7bce91aa481a7d39))
+
+
+### Features
+
+* **useThrottle:** version -> 0.3.2 ([4ebd32c](https://github.com/react-cmpt/hooks/commit/4ebd32cc4eef38c2e22ac9a5d4b961ed2c83a2ce))
+
+
+
 ## [0.4.2](https://github.com/react-cmpt/hooks/compare/v0.4.1...v0.4.2) (2021-01-30)
 
 
