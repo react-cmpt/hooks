@@ -23,17 +23,14 @@ export default function useDebouncedClick<R = any, Args extends any[] = any[]>(
 ): ReturnResult<Args> {
   const { callback, loading, error } = useAsyncClick<R, Args>(asyncFunc);
 
-  const [
-    onClickEvent,
-    cancelDebouncedCallback,
-    callPending,
-  ] = useDebouncedCallback<Args>(
-    async (...args: Args) => {
-      await callback(...args);
-    },
-    wait,
-    options
-  );
+  const [onClickEvent, cancelDebouncedCallback, callPending] =
+    useDebouncedCallback<Args>(
+      async (...args: Args) => {
+        await callback(...args);
+      },
+      wait,
+      options
+    );
 
   return {
     callback: onClickEvent,
