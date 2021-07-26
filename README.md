@@ -24,6 +24,7 @@ yarn add @react-cmpt/hooks
 - [useInterval](#useInterval)
 - [useLoadImg](#useLoadImg)
 - [useMountedState](#useMountedState)
+- [useRender](#useRender)
 - [useThrottle](#useThrottle)
 - [useThrottleFn](#useThrottleFn)
 - [useUnmount](#useUnmount)
@@ -309,6 +310,29 @@ const Demo = () => {
   });
 
   return <div data-loading={loading}>{imgNode}</div>;
+};
+```
+
+### useRender
+
+Re-render components
+
+| return   | type     | default | explain           |
+| -------- | -------- | ------- | ----------------- |
+| rerender | function |         | rerender callback |
+
+```tsx
+import { useRender } from "@react-cmpt/hooks";
+
+const Demo = () => {
+  const rerender = useRender();
+
+  return (
+    <>
+      <div>Date: {Date.now()}</div>
+      <button onClick={rerender}>Update</button>
+    </>
+  );
 };
 ```
 
