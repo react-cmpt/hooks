@@ -71,7 +71,7 @@ describe("useAsyncClick", () => {
       res2 = await result.current.callback();
     });
 
-    expect(res2).toEqual(0);
+    expect(res2).toBeUndefined();
     expect(result.current.error).toEqual(0);
     expect(result.current.loading).toEqual(false);
 

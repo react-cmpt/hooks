@@ -15,7 +15,7 @@ export default function useAsyncClick<R = any, Args extends any[] = any[]>(
   asyncFunc: (...args: Args) => Promise<R>,
   initState?: AsyncState
 ): {
-  callback: (...args: Args) => Promise<R>;
+  callback: (...args: Args) => Promise<R | undefined>;
   loading: boolean;
   error: Error | undefined;
 } {
@@ -34,8 +34,7 @@ export default function useAsyncClick<R = any, Args extends any[] = any[]>(
         return result;
       } catch (error) {
         getMounted() && setState({ loading: false, error: error as Error });
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        return error;
+        return undefined;
       }
     },
     [asyncFunc, getMounted]
