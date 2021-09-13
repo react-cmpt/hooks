@@ -2,36 +2,17 @@ import { renderHook, act } from "@testing-library/react-hooks";
 
 import useDebouncedClick from "../src/useDebouncedClick";
 
-const asyncFn = (count: number): Promise<number> => {
-  return new Promise((res) => {
-    setTimeout(
-      (value: number) => {
-        res(value);
-      },
-      0,
-      count
-    );
-  });
-};
-
-// const errFn = (): Promise<number> => {
-//   return new Promise((res, rej) => {
-//     setTimeout(() => {
-//       rej(0);
-//     }, 0);
-//   });
-// };
+const asyncFn = jest.fn().mockImplementation((value) => Promise.resolve(value));
 
 describe("useDebouncedClick", () => {
-  beforeAll(() => {
+  beforeEach(() => {
     jest.useFakeTimers();
   });
 
   afterEach(() => {
+    jest.runOnlyPendingTimers();
+    jest.clearAllMocks();
     jest.clearAllTimers();
-  });
-
-  afterAll(() => {
     jest.useRealTimers();
   });
 

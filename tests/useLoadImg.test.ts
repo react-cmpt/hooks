@@ -1,6 +1,5 @@
-import React, { Component } from "react";
 import { renderHook, act } from "@testing-library/react-hooks";
-import ReactTestUtils from "react-dom/test-utils";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 import useLoadImg from "../src/useLoadImg";
 
@@ -14,7 +13,7 @@ describe("useLoadImg", () => {
     expect(result.current.isError).toEqual(true);
   });
 
-  it("Init", () => {
+  it("Init", async () => {
     const onError = jest.fn();
     const onLoad = jest.fn();
     const { result } = renderHook(() =>
@@ -28,18 +27,12 @@ describe("useLoadImg", () => {
 
     const node = result.current.imgNode;
 
-    class ImgNode extends Component {
-      render() {
-        return <div>{node}</div>;
-      }
-    }
+    render(node);
 
-    const rendered = ReactTestUtils.renderIntoDocument<Component>(
-      <ImgNode />
-    ) as Component;
-    const img = ReactTestUtils.findRenderedDOMComponentWithTag(rendered, "img");
-    void act(() => {
-      ReactTestUtils.Simulate.error(img);
+    const img = await screen.findByRole("img");
+
+    act(() => {
+      fireEvent.error(img);
     });
 
     expect(onError).toHaveBeenCalled();
@@ -47,9 +40,8 @@ describe("useLoadImg", () => {
     expect(result.current.state).toEqual("error");
     expect(result.current.loading).toEqual(false);
     expect(result.current.isError).toEqual(true);
-
-    void act(() => {
-      ReactTestUtils.Simulate.load(img);
+    act(() => {
+      fireEvent.load(img);
     });
 
     expect(onLoad).toHaveBeenCalled();
