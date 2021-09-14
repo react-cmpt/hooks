@@ -230,8 +230,8 @@ Handle the setInterval timer function.
 
 | option | type     | default | explain                                 |
 | ------ | -------- | ------- | --------------------------------------- |
-| fn     | function |         | Handle function. (setInterval callback) |
-| delay  | number   | 0       | setInterval ms.                         |
+| fn     | function | -       | Handle function. (setInterval callback) |
+| delay  | number   | -       | setInterval ms.                         |
 
 | return | type              | default | explain                           |
 | ------ | ----------------- | ------- | --------------------------------- |
