@@ -23,7 +23,7 @@ export default function useLoadImg(options: {
   loading: boolean;
   isError: boolean;
 } {
-  const { src, reqLoading, className, style, imgProps } = options;
+  const { src, reqLoading, className, style, imgProps } = options || {};
   const [state, setState] = useState<EImgState>("idle");
 
   const loading = (state === "loading" && src != null) || !!reqLoading;

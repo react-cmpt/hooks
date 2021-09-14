@@ -51,7 +51,7 @@ describe("useLoadImg", () => {
     expect(result.current.isError).toEqual(false);
   });
 
-  it("Image props", () => {
+  it("Image props", async () => {
     const optionsObj = {
       src: "./demo.jpg",
       style: { width: "100%" },
@@ -67,5 +67,39 @@ describe("useLoadImg", () => {
     expect(node.props.style).toEqual(optionsObj.style);
     expect(node.props.className).toEqual(optionsObj.className);
     expect(result.current.imgNode.key).toEqual(optionsObj.imgProps.key);
+
+    render(node);
+
+    const img = await screen.findByRole("img");
+
+    expect(result.current.state).toEqual("loading");
+    act(() => {
+      fireEvent.error(img);
+    });
+    expect(result.current.state).toEqual("error");
+    act(() => {
+      fireEvent.load(img);
+    });
+    expect(result.current.state).toEqual("done");
+  });
+
+  it("Empty props", async () => {
+    const { result } = renderHook(() => useLoadImg(null as any));
+
+    expect(result.current.state).toEqual("idle");
+
+    render(result.current.imgNode);
+    const img = await screen.findByRole("img");
+
+    expect(result.current.state).toEqual("idle");
+    act(() => {
+      fireEvent.error(img);
+    });
+    expect(result.current.state).toEqual("error");
+
+    act(() => {
+      fireEvent.load(img);
+    });
+    expect(result.current.state).toEqual("done");
   });
 });
