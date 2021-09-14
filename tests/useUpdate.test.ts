@@ -1,15 +1,15 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 import { useEffect } from "react";
 
-import useRender from "../src/useRender";
+import useUpdate from "../src/useUpdate";
 
 describe("useUnmount", () => {
   it("should be defined", () => {
-    expect(useRender).toBeDefined();
+    expect(useUpdate).toBeDefined();
   });
 
   it("return type (function)", () => {
-    const { result } = renderHook(() => useRender());
+    const { result } = renderHook(() => useUpdate());
 
     expect(result.current).toBeInstanceOf(Function);
   });
@@ -20,7 +20,7 @@ describe("useUnmount", () => {
 
     const { result, rerender } = renderHook(() => {
       renderTimes += 1;
-      const rerender = useRender();
+      const rerender = useUpdate();
 
       useEffect(() => {
         fnUpdateTimes += 1;

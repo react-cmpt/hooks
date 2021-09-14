@@ -7,7 +7,7 @@ import useDeepEffect from "./useDeepEffect";
 import useInterval from "./useInterval";
 import useLoadImg from "./useLoadImg";
 import useMountedState from "./useMountedState";
-import useRender from "./useRender";
+import useUpdate from "./useUpdate";
 import useThrottle from "./useThrottle";
 import useThrottleFn from "./useThrottleFn";
 import useUnmount from "./useUnmount";
@@ -23,7 +23,7 @@ export {
   useInterval,
   useLoadImg,
   useMountedState,
-  useRender,
+  useUpdate,
   useThrottle,
   useThrottleFn,
   useUnmount,

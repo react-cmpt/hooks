@@ -24,10 +24,10 @@ yarn add @react-cmpt/hooks
 - [useInterval](#useInterval)
 - [useLoadImg](#useLoadImg)
 - [useMountedState](#useMountedState)
-- [useRender](#useRender)
 - [useThrottle](#useThrottle)
 - [useThrottleFn](#useThrottleFn)
 - [useUnmount](#useUnmount)
+- [useUpdate](#useUpdate)
 - [useUpdateEffect](#useUpdateEffect)
 
 ### useAsyncClick
@@ -313,29 +313,6 @@ const Demo = () => {
 };
 ```
 
-### useRender
-
-Re-render components
-
-| return   | type     | default | explain           |
-| -------- | -------- | ------- | ----------------- |
-| rerender | function |         | rerender callback |
-
-```tsx
-import { useRender } from "@react-cmpt/hooks";
-
-const Demo = () => {
-  const rerender = useRender();
-
-  return (
-    <>
-      <div>Date: {Date.now()}</div>
-      <button onClick={rerender}>Update</button>
-    </>
-  );
-};
-```
-
 ### useThrottle
 
 throttled value
@@ -458,6 +435,29 @@ const Demo = () => {
   });
 
   // ...
+};
+```
+
+### useUpdate
+
+Re-render components
+
+| return   | type     | default | explain           |
+| -------- | -------- | ------- | ----------------- |
+| rerender | function |         | rerender callback |
+
+```tsx
+import { useUpdate } from "@react-cmpt/hooks";
+
+const Demo = () => {
+  const rerender = useUpdate();
+
+  return (
+    <>
+      <div>Date: {Date.now()}</div>
+      <button onClick={rerender}>Update</button>
+    </>
+  );
 };
 ```
 
