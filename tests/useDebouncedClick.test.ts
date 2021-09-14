@@ -69,4 +69,24 @@ describe("useDebouncedClick", () => {
     jest.advanceTimersByTime(200);
     expect(fn).toHaveBeenCalledTimes(1);
   });
+
+  it("wait undefined", async () => {
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useDebouncedClick<void>(asyncFn)
+    );
+
+    expect(result.current.loading).toEqual(false);
+
+    act(() => {
+      result.current.callback(1);
+      jest.advanceTimersByTime(0);
+    });
+
+    expect(result.current.loading).toEqual(true);
+
+    await waitForNextUpdate();
+
+    expect(result.current.loading).toEqual(false);
+    expect(result.current.error).toBeUndefined();
+  });
 });
