@@ -1,3 +1,19 @@
+# [0.6.0](https://github.com/react-cmpt/hooks/compare/v0.5.0...v0.6.0) (2021-09-14)
+
+
+### Bug Fixes
+
+* **useInterval:** Update unmount cycle. And remove default delay value ([851f5c9](https://github.com/react-cmpt/hooks/commit/851f5c929d346ecd5ba36d9de93a6c605536b4e1))
+* **useLoadImg:** empty options ([5c8c939](https://github.com/react-cmpt/hooks/commit/5c8c9394dc9f8695b9b4b4160e98ff20905ed7bd))
+
+
+### Features
+
+* **useUpdate:** new hook. Re-render components ([b5a9c7f](https://github.com/react-cmpt/hooks/commit/b5a9c7f453979c86235ea38189d38d77017285ff))
+* **useAsyncClick:** Callbacks do not return errors ([ec0015e](https://github.com/react-cmpt/hooks/commit/ec0015e32cd7f2e663dc2982cdf1383e5d1e0574), [c7b1585](https://github.com/react-cmpt/hooks/commit/c7b1585f6a606c97a850eb1b5949e24862327cf2))
+
+
+
 # [0.5.0](https://github.com/react-cmpt/hooks/compare/v0.4.2...v0.5.0) (2021-04-13)
 
 
