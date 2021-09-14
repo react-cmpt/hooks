@@ -1,18 +1,23 @@
 import { renderHook, act } from "@testing-library/react-hooks";
+import { useCallback, useState } from "react";
 
 import useInterval from "../src/useInterval";
 
+const original = console.error;
+
 describe("useInterval", () => {
-  beforeAll(() => {
+  beforeEach(() => {
     jest.useFakeTimers();
+    console.error = jest.fn();
   });
 
   afterEach(() => {
+    jest.runOnlyPendingTimers();
+    jest.clearAllMocks();
     jest.clearAllTimers();
-  });
-
-  afterAll(() => {
     jest.useRealTimers();
+
+    console.error = original;
   });
 
   it("should be defined", () => {
@@ -43,6 +48,77 @@ describe("useInterval", () => {
     expect(fn).toHaveBeenCalledTimes(2);
     jest.advanceTimersByTime(300);
     expect(fn).toHaveBeenCalledTimes(3);
+
+    rerender(400);
+    jest.advanceTimersByTime(100);
+    expect(fn).toHaveBeenCalledTimes(3);
+    rerender(500);
+    jest.advanceTimersByTime(200);
+    expect(fn).toHaveBeenCalledTimes(3);
+    jest.advanceTimersByTime(300);
+    expect(fn).toHaveBeenCalledTimes(4);
+
+    unmount();
+  });
+
+  it("state delay", () => {
+    const fn = jest.fn();
+    const { result, unmount } = renderHook(() => {
+      const [delay, setDelay] = useState<number>();
+      const interval = useInterval(fn, delay);
+
+      const callback = useCallback((num: number) => {
+        setDelay(num);
+      }, []);
+
+      return { interval, callback };
+    });
+
+    expect(console.error).toHaveBeenCalled();
+    expect(fn).toHaveBeenCalledTimes(1);
+    expect(result.current.interval.state).toEqual("idle");
+
+    act(() => {
+      result.current.callback(200);
+    });
+    expect(fn).toHaveBeenCalledTimes(1);
+    jest.advanceTimersByTime(200);
+    expect(fn).toHaveBeenCalledTimes(2);
+
+    act(() => {
+      result.current.callback(300);
+    });
+    jest.advanceTimersByTime(200);
+    act(() => {
+      result.current.callback(400);
+      result.current.callback(500);
+      result.current.callback(600);
+      result.current.callback(400);
+    });
+    jest.advanceTimersByTime(100);
+    expect(fn).toHaveBeenCalledTimes(2);
+    jest.advanceTimersByTime(300);
+    expect(fn).toHaveBeenCalledTimes(3);
+
+    unmount();
+  });
+
+  it("Empty fn", () => {
+    const { rerender, result, unmount } = renderHook((props: number) =>
+      useInterval(null as any, props)
+    );
+
+    expect(result.current.state).toEqual("idle");
+
+    rerender(200);
+    expect(result.current.state).toEqual("running");
+    jest.advanceTimersByTime(200);
+    expect(result.current.state).toEqual("running");
+
+    act(() => {
+      result.current.cancel();
+    });
+    expect(result.current.state).toEqual("idle");
 
     unmount();
   });
@@ -124,5 +200,22 @@ describe("useInterval", () => {
     });
 
     expect(fn).toHaveBeenCalledTimes(1);
+    expect(result.current.state).toEqual("running");
+    jest.advanceTimersByTime(200);
+    expect(fn).toHaveBeenCalledTimes(2);
+    expect(result.current.state).toEqual("running");
+    jest.advanceTimersByTime(200);
+    expect(fn).toHaveBeenCalledTimes(3);
+    expect(result.current.state).toEqual("running");
+
+    act(() => {
+      result.current.cancel();
+    });
+    jest.advanceTimersByTime(200);
+    expect(fn).toHaveBeenCalledTimes(3);
+    expect(result.current.state).toEqual("running");
+    jest.advanceTimersByTime(200);
+    expect(fn).toHaveBeenCalledTimes(3);
+    expect(result.current.state).toEqual("running");
   });
 });

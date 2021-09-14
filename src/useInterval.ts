@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import useMountedState from "./useMountedState";
+import useUnmount from "./useUnmount";
 
 export type ETimerState = "idle" | "running";
 
@@ -24,16 +25,23 @@ export default function useInterval(
   const run = useCallback(() => {
     getMounted() && setState("running");
 
-    timer.current = setInterval(() => {
+    if (typeof delay === "number") {
+      timer.current = setInterval(() => {
+        fnRef.current?.();
+      }, delay);
+    } else {
+      console.error("[useInterval] ERROR: 'delay' type error");
+
       fnRef.current?.();
-    }, delay || 0);
+      getMounted() && setState("idle");
+    }
   }, [delay, getMounted]);
 
   const cancel = useCallback(() => {
     getMounted() && setState("idle");
 
     if (timer.current) {
-      clearTimeout(timer.current);
+      clearInterval(timer.current);
     }
     timer.current = undefined;
   }, [getMounted]);
@@ -44,9 +52,9 @@ export default function useInterval(
     }
 
     run();
-
-    return cancel;
   }, [delay, cancel, run]);
+
+  useUnmount(cancel);
 
   return { state, cancel, run };
 }
