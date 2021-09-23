@@ -228,10 +228,11 @@ const Demo = ({ value: Object }) => {
 
 Handle the setInterval timer function.
 
-| option | type     | default | explain                                 |
-| ------ | -------- | ------- | --------------------------------------- |
-| fn     | function | -       | Handle function. (setInterval callback) |
-| delay  | number   | -       | setInterval ms.                         |
+| option          | type     | default | explain                                 |
+| --------------- | -------- | ------- | --------------------------------------- |
+| fn              | function | -       | Handle function. (setInterval callback) |
+| delay           | number   | -       | setInterval ms.                         |
+| options.autorun | boolean  | true    | Runs automatically when mounted         |
 
 | return | type              | default | explain                           |
 | ------ | ----------------- | ------- | --------------------------------- |

@@ -4,6 +4,11 @@ import useUnmount from "./useUnmount";
 
 export type ETimerState = "idle" | "running";
 
+export type UseIntervalOptions = {
+  /** Runs automatically when mounted. @default true */
+  autorun?: boolean;
+};
+
 /**
  * useInterval
  *
@@ -12,8 +17,10 @@ export type ETimerState = "idle" | "running";
  */
 export default function useInterval(
   fn: () => void,
-  delay?: number
+  delay?: number,
+  options?: UseIntervalOptions
 ): { state: ETimerState; cancel: () => void; run: () => void } {
+  const { autorun = true } = options || {};
   const timer = useRef<ReturnType<typeof setTimeout>>();
   const fnRef = useRef<() => void>();
 
@@ -51,8 +58,10 @@ export default function useInterval(
       cancel();
     }
 
-    run();
-  }, [delay, cancel, run]);
+    if (autorun) {
+      run();
+    }
+  }, [delay, cancel, run, autorun]);
 
   useUnmount(cancel);
 

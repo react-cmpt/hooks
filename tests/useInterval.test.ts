@@ -175,6 +175,56 @@ describe("useInterval", () => {
     expect(count).toBe(3);
   });
 
+  it("options: autoRun", () => {
+    const fn = jest.fn();
+    const { rerender, result, unmount } = renderHook(() =>
+      useInterval(fn, 100, { autorun: false })
+    );
+
+    rerender();
+    expect(fn).toHaveBeenCalledTimes(0);
+    expect(result.current.state).toEqual("idle");
+
+    jest.advanceTimersByTime(100);
+    expect(fn).toHaveBeenCalledTimes(0);
+    expect(result.current.state).toEqual("idle");
+
+    rerender();
+    rerender();
+    rerender();
+    jest.advanceTimersByTime(100);
+    expect(fn).toHaveBeenCalledTimes(0);
+    expect(result.current.state).toEqual("idle");
+
+    act(() => {
+      result.current.run();
+    });
+
+    expect(fn).toHaveBeenCalledTimes(0);
+    expect(result.current.state).toEqual("running");
+    jest.advanceTimersByTime(100);
+    expect(fn).toHaveBeenCalledTimes(1);
+    expect(result.current.state).toEqual("running");
+    jest.advanceTimersByTime(100);
+    expect(fn).toHaveBeenCalledTimes(2);
+    expect(result.current.state).toEqual("running");
+
+    act(() => {
+      result.current.cancel();
+    });
+    expect(result.current.state).toEqual("idle");
+
+    jest.advanceTimersByTime(100);
+    expect(fn).toHaveBeenCalledTimes(2);
+    expect(result.current.state).toEqual("idle");
+
+    unmount();
+
+    jest.advanceTimersByTime(100);
+    expect(fn).toHaveBeenCalledTimes(2);
+    expect(result.current.state).toEqual("idle");
+  });
+
   it("Unmount", () => {
     const fn = jest.fn();
     const { result, rerender, unmount } = renderHook(() =>
