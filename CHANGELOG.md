@@ -1,3 +1,12 @@
+## [0.6.1](https://github.com/react-cmpt/hooks/compare/v0.6.0...v0.6.1) (2021-09-23)
+
+
+### Features
+
+* **useInterval:** autorun options ([a1209bf](https://github.com/react-cmpt/hooks/commit/a1209bf44570901df96fcba3cd63e1078ffe66aa))
+
+
+
 # [0.6.0](https://github.com/react-cmpt/hooks/compare/v0.5.0...v0.6.0) (2021-09-14)
 
 
