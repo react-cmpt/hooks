@@ -1,3 +1,12 @@
+## [0.6.2](https://github.com/react-cmpt/hooks/compare/v0.6.1...v0.6.2) (2021-09-23)
+
+
+### Bug Fixes
+
+* Build(tsconfig): jsx mode `react-jsx` -> `react` for react 16. ([6fff906](https://github.com/react-cmpt/hooks/commit/6fff9067bc9e68d95a28c220553d66d40961863e))
+
+
+
 ## [0.6.1](https://github.com/react-cmpt/hooks/compare/v0.6.0...v0.6.1) (2021-09-23)
 
 
