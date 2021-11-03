@@ -1,3 +1,12 @@
+# [0.7.0](https://github.com/react-cmpt/hooks/compare/v0.6.2...v0.7.0) (2021-11-03)
+
+
+### Features
+
+* **useDebounce:** version -> v7 ([988c7d1](https://github.com/react-cmpt/hooks/commit/988c7d1fc44a277fba783b61d9ec6d723f8aff39))
+
+
+
 ## [0.6.2](https://github.com/react-cmpt/hooks/compare/v0.6.1...v0.6.2) (2021-09-23)
 
 
