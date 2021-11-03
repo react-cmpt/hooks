@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { renderHook, act } from "@testing-library/react-hooks";
 
 import useDebouncedClick from "../src/useDebouncedClick";
