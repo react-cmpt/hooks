@@ -1,5 +1,10 @@
 import useDebouncedCallback from "use-debounce/lib/useDebouncedCallback";
+import type {
+  ControlFunctions,
+  DebouncedState,
+} from "use-debounce/lib/useDebouncedCallback";
 
+export type { ControlFunctions, DebouncedState };
 /**
  * useDebouncedCallback
  *

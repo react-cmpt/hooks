@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { renderHook, act } from "@testing-library/react-hooks";
 
 import useDebouncedClick from "../src/useDebouncedClick";
@@ -26,7 +27,7 @@ describe("useDebouncedClick", () => {
     expect(hook.result.current.loading).toEqual(false);
 
     void act(() => {
-      hook.result.current.callback(1);
+      void hook.result.current.callback(1);
       jest.advanceTimersByTime(200);
     });
 
@@ -43,14 +44,14 @@ describe("useDebouncedClick", () => {
     const fn = jest.fn((props: number) => {
       count = props;
     });
-    const hook = renderHook(() => useDebouncedClick<void>(fn as any, 200));
+    const hook = renderHook(() => useDebouncedClick(fn as any, 200));
 
     expect(fn).toHaveBeenCalledTimes(0);
 
     void act(() => {
-      hook.result.current.callback(1);
-      hook.result.current.callback(2);
-      hook.result.current.callback(3);
+      void hook.result.current.callback(1);
+      void hook.result.current.callback(2);
+      void hook.result.current.callback(3);
       jest.advanceTimersByTime(200);
     });
 
@@ -59,9 +60,9 @@ describe("useDebouncedClick", () => {
     expect(count).toEqual(3);
 
     void act(() => {
-      hook.result.current.callback(4);
-      hook.result.current.callback(5);
-      hook.result.current.callback(6);
+      void hook.result.current.callback(4);
+      void hook.result.current.callback(5);
+      void hook.result.current.callback(6);
     });
 
     hook.unmount();
@@ -72,13 +73,13 @@ describe("useDebouncedClick", () => {
 
   it("wait undefined", async () => {
     const { result, waitForNextUpdate } = renderHook(() =>
-      useDebouncedClick<void>(asyncFn)
+      useDebouncedClick(asyncFn)
     );
 
     expect(result.current.loading).toEqual(false);
 
     act(() => {
-      result.current.callback(1);
+      void result.current.callback(1);
       jest.advanceTimersByTime(0);
     });
 
