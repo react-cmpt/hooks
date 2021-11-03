@@ -1,4 +1,4 @@
-import useDebounce from "use-debounce/lib/useDebounce";
+import { useDebounce } from "use-debounce";
 
 /**
  * useDebounce
