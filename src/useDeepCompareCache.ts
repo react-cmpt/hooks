@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import isEqual from "fast-deep-equal";
+import isEqual from "fast-deep-equal/react";
 
 /**
  * useDeepCompareCache
