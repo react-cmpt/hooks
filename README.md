@@ -286,13 +286,14 @@ const Demo = () => {
 
 Get image loading status
 
-| option     | type    | default | explain         |
-| ---------- | ------- | ------- | --------------- |
-| src        | string  |         | `<img />` src   |
-| reqLoading | boolean |         | request loading |
-| className  | string  |         |                 |
-| style      | Object  |         |                 |
-| imgProps   | Object  |         | `<img />` props |
+| option     | type    | default | explain             |
+| ---------- | ------- | ------- | ------------------- |
+| src        | string  |         | `<img />` src       |
+| reqLoading | boolean |         | request loading     |
+| className  | string  |         |                     |
+| style      | Object  |         |                     |
+| imgProps   | Object  |         | `<img />` props     |
+| lazy       | number  | 0       | Delay of done state |
 
 | return  | type                               | default | explain       |
 | ------- | ---------------------------------- | ------- | ------------- |
