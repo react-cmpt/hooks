@@ -1,6 +1,6 @@
 {
   "name": "@react-cmpt/hooks",
-  "version": "0.7.1-alpha.0",
+  "version": "0.7.1",
   "description": "Some react hooks",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

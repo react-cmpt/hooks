@@ -1,3 +1,18 @@
+## [0.7.1](https://github.com/react-cmpt/hooks/compare/v0.7.0...v0.7.1) (2021-11-12)
+
+
+### Bug Fixes
+
+* **useDebounced:** pkg read error ([ce75abf](https://github.com/react-cmpt/hooks/commit/ce75abf9715a49cb2e3467eea9ab689b3bbcf333))
+* **useLoadImg:** done state to queue ([e5ee548](https://github.com/react-cmpt/hooks/commit/e5ee548fc87388cca95e4c4a965a2d6f7669a063))
+
+
+### Features
+
+* **useDeepCompareCache:** use fast-deep-equal/react ([85fb74e](https://github.com/react-cmpt/hooks/commit/85fb74ef7535bac99b0d8213e9d06a5960e6a0d6))
+
+
+
 # [0.7.0](https://github.com/react-cmpt/hooks/compare/v0.6.2...v0.7.0) (2021-11-03)
 
 
