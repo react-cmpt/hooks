@@ -4,6 +4,18 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import useLoadImg from "../src/useLoadImg";
 
 describe("useLoadImg", () => {
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+
   it("Init null", () => {
     const { result } = renderHook(() => useLoadImg({}));
 
@@ -42,6 +54,7 @@ describe("useLoadImg", () => {
     expect(result.current.isError).toEqual(true);
     act(() => {
       fireEvent.load(img);
+      jest.advanceTimersByTime(0);
     });
 
     expect(onLoad).toHaveBeenCalled();
@@ -79,6 +92,7 @@ describe("useLoadImg", () => {
     expect(result.current.state).toEqual("error");
     act(() => {
       fireEvent.load(img);
+      jest.advanceTimersByTime(0);
     });
     expect(result.current.state).toEqual("done");
   });
@@ -99,6 +113,35 @@ describe("useLoadImg", () => {
 
     act(() => {
       fireEvent.load(img);
+      jest.advanceTimersByTime(0);
+    });
+    expect(result.current.state).toEqual("done");
+  });
+
+  it("props lazy", async () => {
+    const optionsObj = {
+      src: "./demo.jpg",
+      lazy: 100,
+    };
+    const { result } = renderHook(() => useLoadImg(optionsObj));
+
+    const node = result.current.imgNode;
+
+    expect(node.type).toEqual("img");
+    expect(node.props.src).toEqual(optionsObj.src);
+    render(node);
+
+    const img = await screen.findByRole("img");
+
+    expect(result.current.state).toEqual("loading");
+    act(() => {
+      fireEvent.load(img);
+      jest.advanceTimersByTime(0);
+    });
+    expect(result.current.state).toEqual("loading");
+
+    act(() => {
+      jest.advanceTimersByTime(optionsObj.lazy);
     });
     expect(result.current.state).toEqual("done");
   });
