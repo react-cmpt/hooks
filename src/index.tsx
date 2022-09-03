@@ -7,6 +7,7 @@ import useDeepEffect from "./useDeepEffect";
 import useInterval from "./useInterval";
 import useLoadImg from "./useLoadImg";
 import useMountedState from "./useMountedState";
+import useSupportSafeArea from "./useSupportSafeArea";
 import useUpdate from "./useUpdate";
 import useThrottle from "./useThrottle";
 import useThrottleFn from "./useThrottleFn";
@@ -23,6 +24,7 @@ export {
   useInterval,
   useLoadImg,
   useMountedState,
+  useSupportSafeArea,
   useUpdate,
   useThrottle,
   useThrottleFn,

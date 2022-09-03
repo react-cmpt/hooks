@@ -24,6 +24,7 @@ yarn add @react-cmpt/hooks
 - [useInterval](#useInterval)
 - [useLoadImg](#useLoadImg)
 - [useMountedState](#useMountedState)
+- [useSupportSafeArea](#useSupportSafeArea)
 - [useThrottle](#useThrottle)
 - [useThrottleFn](#useThrottleFn)
 - [useUnmount](#useUnmount)
@@ -280,6 +281,62 @@ const Demo = () => {
 
   // ...
 };
+```
+
+### useSupportSafeArea
+
+- check if `safe-area-inset-[top]` env is supported
+- https://webkit.org/blog/7929/designing-websites-for-iphone-x/
+
+| options      | type                                   | default | explain                   |
+| ------------ | -------------------------------------- | ------- | ------------------------- |
+| defaultState | boolean                                | -       | default return bool       |
+| position     | 'top' \| 'left' \| 'right' \| 'bottom' | `top`   | safe-area-inset-[postion] |
+
+```tsx
+import { useLoadImg } from "@react-cmpt/hooks";
+
+const Demo = () => {
+  const supportSafeArea = useSupportSafeArea({ postion: "bottom" });
+
+  return (
+    <div
+      style={{
+        paddingBottom: supportSafeArea ? `env(safe-area-inset-bottom)` : "16px",
+      }}
+    >
+      footer
+    </div>
+  );
+};
+```
+
+#### constant or env
+
+```css
+:root {
+  @supports (top: constant(safe-area-inset-top)) {
+    --safe-area-inset-top: constant(safe-area-inset-top);
+    --safe-area-inset-right: constant(safe-area-inset-right);
+    --safe-area-inset-bottom: constant(safe-area-inset-bottom);
+    --safe-area-inset-left: constant(safe-area-inset-left);
+  }
+
+  @supports (top: env(safe-area-inset-top)) {
+    --safe-area-inset-top: env(safe-area-inset-top);
+    --safe-area-inset-right: env(safe-area-inset-right);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    --safe-area-inset-left: env(safe-area-inset-left);
+  }
+}
+
+.demo {
+  padding-bottom: 16px;
+
+  &[data-supportSafeArea="true"] {
+    padding-bottom: var(--safe-area-inset-bottom);
+  }
+}
 ```
 
 ### useLoadImg
