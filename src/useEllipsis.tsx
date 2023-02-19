@@ -8,6 +8,7 @@ import React, {
 } from "react";
 
 import useDebouncedCallback from "./useDebouncedCallback";
+import useUpdateEffect from "./useUpdateEffect";
 
 type HTMLDIVProps = DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -95,6 +96,10 @@ export default function useEllipsis(
       roRef.current.observe(wrapperRef.current);
     }
   }, [deComputeEllipsis]);
+
+  useUpdateEffect(() => {
+    observerEl();
+  }, [overflow]);
 
   useEffect(() => {
     observerEl();
