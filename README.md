@@ -114,7 +114,7 @@ import { useDebouncedCallback } from "@react-cmpt/hooks";
 const Demo = () => {
   const [value, setValue] = useState();
   // Debounce callback
-  const [debouncedCallback] = useDebouncedCallback(
+  const debouncedCallback = useDebouncedCallback(
     // function
     (value) => {
       setValue(value);
