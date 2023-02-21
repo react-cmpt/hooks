@@ -4,6 +4,7 @@ import useDebouncedCallback from "./useDebouncedCallback";
 import useDebouncedClick from "./useDebouncedClick";
 import useDeepCompareCache from "./useDeepCompareCache";
 import useDeepEffect from "./useDeepEffect";
+import useEllipsis from "./useEllipsis";
 import useInterval from "./useInterval";
 import useLoadImg from "./useLoadImg";
 import useMountedState from "./useMountedState";
@@ -21,6 +22,7 @@ export {
   useDebouncedClick,
   useDeepCompareCache,
   useDeepEffect,
+  useEllipsis,
   useInterval,
   useLoadImg,
   useMountedState,

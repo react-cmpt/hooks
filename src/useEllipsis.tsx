@@ -43,17 +43,40 @@ const getEllipsisStyle = (lineClamp?: WebkitLineClampType): CSSProperties => {
 };
 
 export type UseEllipsisOptions = {
+  /**
+   *  The **`-webkit-line-clamp`** CSS property
+   */
   lineClamp?: WebkitLineClampType;
+  /**
+   * The number of milliseconds to delay. **useDebouncedCallback**
+   * @default 500
+   */
   debouncedWait?: number;
   wrapperClassName?: string;
   wrapperStyle?: CSSProperties;
-  wrapperProps?: Partial<HTMLDIVProps>;
+  wrapperProps?: Partial<HTMLDIVProps> | Record<string, string>;
 };
 
+/**
+ * hidden overflow content and get overflow status
+ */
 export default function useEllipsis(
   content?: ReactNode,
   options?: UseEllipsisOptions
-) {
+): {
+  /**
+   * render element
+   */
+  node: JSX.Element;
+  /**
+   * whether overflow content
+   */
+  overflow: boolean;
+  /**
+   * re-observe wrapper element
+   */
+  reObserveElement: () => void;
+} {
   const {
     lineClamp,
     debouncedWait = 500,
@@ -123,5 +146,5 @@ export default function useEllipsis(
     [content, lineClamp, wrapperClassName, wrapperProps, wrapperStyle]
   );
 
-  return { node, overflow };
+  return { node, overflow, reObserveElement: observerEl };
 }

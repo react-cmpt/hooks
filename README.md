@@ -21,6 +21,7 @@ yarn add @react-cmpt/hooks
 - [useDebouncedClick](#useDebouncedClick)
 - [useDeepCompareCache](#useDeepCompareCache)
 - [useDeepEffect](#useDeepEffect)
+- [useEllipsis](#useEllipsis)
 - [useInterval](#useInterval)
 - [useLoadImg](#useLoadImg)
 - [useMountedState](#useMountedState)
@@ -224,6 +225,40 @@ const Demo = ({ value: Object }) => {
   // ...
 };
 ```
+
+### useEllipsis
+
+Hidden overflow content and get overflow status
+
+| option                   | type             | default | explain                                                       |
+| ------------------------ | ---------------- | ------- | ------------------------------------------------------------- |
+| content                  | `ReactNode`      | -       | Handle function. (setInterval callback)                       |
+| options.lineClamp        | number \| string | -       | The **`-webkit-line-clamp`** CSS property                     |
+| options.debouncedWait    | number           | 500     | The number of milliseconds to delay. **useDebouncedCallback** |
+| options.wrapperClassName | string           | -       | Wrapper element className                                     |
+| options.wrapperStyle     | Object           | -       | Wrapper element style                                         |
+| options.wrapperProps     | Object           | -       | Wrapper element other props                                   |
+
+| return           | type         | default | explain                           |
+| ---------------- | ------------ | ------- | --------------------------------- |
+| node             | `JSX.Elment` |         | Render element                    |
+| overflow         | boolean      | false   | Whether overflow content          |
+| reObserveElement | function     |         | Manual re-observe wrapper element |
+
+```tsx
+import { useEllipsis } from "@react-cmpt/hooks";
+
+const Demo = ({ text }) => {
+  const { node, overflow } = useEllipsis(text, { lineClamp: 2 });
+
+  return overflow ? <Tooltip content={text}>{node}</Tooltip> : node;
+};
+```
+
+Browser compatibility
+
+[-webkit-line-clamp](https://caniuse.com/mdn-css_properties_-webkit-line-clamp)
+[ResizeObserver API](https://caniuse.com/mdn-api_resizeobserver)
 
 ### useInterval
 
