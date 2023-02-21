@@ -55,6 +55,10 @@ export type UseEllipsisOptions = {
   wrapperClassName?: string;
   wrapperStyle?: CSSProperties;
   wrapperProps?: Partial<HTMLDIVProps> | Record<string, string>;
+  /**
+   * Default value of `overflow`
+   */
+  defaultOverflow?: boolean;
 };
 
 /**
@@ -83,10 +87,11 @@ export default function useEllipsis(
     wrapperClassName,
     wrapperStyle,
     wrapperProps,
+    defaultOverflow,
   } = options || {};
   const wrapperRef = useRef<HTMLDivElement>(null);
   const roRef = useRef<ResizeObserver>();
-  const [overflow, setOverflow] = useState(false);
+  const [overflow, setOverflow] = useState(defaultOverflow ?? false);
 
   const computeEllipsis = useCallback(() => {
     const _el = wrapperRef.current;

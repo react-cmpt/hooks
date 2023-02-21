@@ -238,6 +238,7 @@ Hidden overflow content and get overflow status
 | options.wrapperClassName | string           | -       | Wrapper element className                                     |
 | options.wrapperStyle     | Object           | -       | Wrapper element style                                         |
 | options.wrapperProps     | Object           | -       | Wrapper element other props                                   |
+| options.defaultOverflow  | boolean          | -       | Default value of `overflow`                                   |
 
 | return           | type         | default | explain                           |
 | ---------------- | ------------ | ------- | --------------------------------- |
