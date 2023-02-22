@@ -1,9 +1,15 @@
 import useAsyncClick from "./useAsyncClick";
-import type { DebouncedState } from "./useDebouncedCallback";
+import type { ControlFunctions } from "./useDebouncedCallback";
 import useDebouncedCallback from "./useDebouncedCallback";
 
-export type ReturnResult<T extends (...args: any[]) => ReturnType<T>> = {
-  callback: DebouncedState<(...args: any[]) => Promise<void>>;
+// [type patch] https://github.com/xnimorz/use-debounce/pull/158
+export type ClickDebouncedState<T extends (...args: any) => any> = ((
+  ...args: Parameters<T>
+) => Promise<void>) &
+  ControlFunctions;
+
+export type ReturnResult<T extends (...args: any[]) => any> = {
+  callback: ClickDebouncedState<T>;
   loading: boolean;
   error: Error | undefined;
 };
@@ -15,9 +21,7 @@ export type ReturnResult<T extends (...args: any[]) => ReturnType<T>> = {
  * @param wait number @default 0
  * @param options maxWait, leading, trailing
  */
-export default function useDebouncedClick<
-  T extends (...args: any[]) => ReturnType<T>
->(
+export default function useDebouncedClick<T extends (...args: any[]) => any>(
   asyncFunc: T,
   wait = 0,
   options?: { maxWait?: number; leading?: boolean; trailing?: boolean }
@@ -36,7 +40,7 @@ export default function useDebouncedClick<
   );
 
   return {
-    callback: onClickEvent,
+    callback: onClickEvent as ClickDebouncedState<T>,
     loading,
     error,
   };
