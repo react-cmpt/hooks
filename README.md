@@ -232,19 +232,20 @@ Hidden overflow content and get overflow status
 
 | option                   | type             | default | explain                                                       |
 | ------------------------ | ---------------- | ------- | ------------------------------------------------------------- |
-| content                  | `ReactNode`      | -       | Handle function. (setInterval callback)                       |
+| content                  | `ReactNode`      | -       | Overflow content. The expectation is String                   |
 | options.lineClamp        | number \| string | -       | The **`-webkit-line-clamp`** CSS property                     |
 | options.debouncedWait    | number           | 500     | The number of milliseconds to delay. **useDebouncedCallback** |
 | options.wrapperClassName | string           | -       | Wrapper element className                                     |
 | options.wrapperStyle     | Object           | -       | Wrapper element style                                         |
 | options.wrapperProps     | Object           | -       | Wrapper element other props                                   |
-| options.defaultOverflow  | boolean          | -       | Default value of `overflow`                                   |
+| options.defaultOverflow  | boolean          | -       | Default value of `overflow` (returns)                         |
 
-| return           | type         | default | explain                           |
-| ---------------- | ------------ | ------- | --------------------------------- |
-| node             | `JSX.Elment` |         | Render element                    |
-| overflow         | boolean      | false   | Whether overflow content          |
-| reObserveElement | function     |         | Manual re-observe wrapper element |
+| return              | type         | default | explain                             |
+| ------------------- | ------------ | ------- | ----------------------------------- |
+| node                | `JSX.Elment` |         | Render element                      |
+| overflow            | boolean      | false   | Whether overflow content            |
+| reObserveElement    | function     |         | Manual re-observe wrapper element   |
+| recalculateEllipsis | function     |         | Recalculate overflow content status |
 
 ```tsx
 import { useEllipsis } from "@react-cmpt/hooks";

@@ -9,6 +9,7 @@ import React, {
 
 import useDebouncedCallback from "./useDebouncedCallback";
 import useUpdateEffect from "./useUpdateEffect";
+import useDeepCompareCache from "./useDeepCompareCache";
 
 type HTMLDIVProps = DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -80,6 +81,10 @@ export default function useEllipsis(
    * re-observe wrapper element
    */
   reObserveElement: () => void;
+  /**
+   * recalculate overflow content status
+   */
+  recalculateEllipsis: () => void;
 } {
   const {
     lineClamp,
@@ -148,8 +153,24 @@ export default function useEllipsis(
         {content}
       </div>
     ),
-    [content, lineClamp, wrapperClassName, wrapperProps, wrapperStyle]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useDeepCompareCache([
+      content,
+      lineClamp,
+      wrapperClassName,
+      wrapperProps,
+      wrapperStyle,
+    ])
   );
 
-  return { node, overflow, reObserveElement: observerEl };
+  useUpdateEffect(() => {
+    deComputeEllipsis();
+  }, [node]);
+
+  return {
+    node,
+    overflow,
+    reObserveElement: observerEl,
+    recalculateEllipsis: deComputeEllipsis,
+  };
 }
