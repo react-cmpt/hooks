@@ -1,3 +1,14 @@
+# [0.8.0](https://github.com/react-cmpt/hooks/compare/v0.7.1...v0.8.0) (2023-03-04)
+
+
+### Features
+
+* **useEllipsis:** hidden overflow content and get overflow status ([#6](https://github.com/react-cmpt/hooks/pull/6))
+* **useSupportSafeArea:** check safe-area-inset env ([e1b499e](https://github.com/react-cmpt/hooks/commit/e1b499effaa5968bf7f6f709cedadf4830bdbcc0))
+* **useDebouncedClick:** keep return type (callback) ([672c148](https://github.com/react-cmpt/hooks/commit/672c1481e97ba09b6ef43adaa13a5e7d194b3c24))
+
+
+
 ## [0.7.1](https://github.com/react-cmpt/hooks/compare/v0.7.0...v0.7.1) (2021-11-12)
 
 
